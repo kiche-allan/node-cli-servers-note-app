@@ -10,17 +10,15 @@
 
 // wait(3000, () => {console.log('3s')})
 
-const wait = (time, cb) => {
-    return new Promise(resolve, reject) => {
-        ssetTimeout(() => {
-            cb()
+const wait = (time) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
             resolve()
         }, time )
     }
-}
+)}
 
-wait(3000, () => {
-    wait(200, () => {
-
-    })
+wait(3000)
+.then(() => {
+    return wait(2000)
 })
