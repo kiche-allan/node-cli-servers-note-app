@@ -23,9 +23,16 @@
 //     return wait(2000)
 // })
 
-import fs from 'node:fs'
+import {readFile} from 'node:fs/promises'
 
-const readPjson = () => {
-    const pjsonPath = new Url('./package.json', import.meta.url).pathname
-    return JSON.parse(fs.readFileSync('./package.json'))
+const readPjson = async () => {
+    const pjsonPath = new URL('./package.json', import.meta.url).pathname
+    console.log(JSON.parse(await readFile(pjsonPath, 'utf-8')))
 }
+const writeFile = async () => {
+    const newFile = new URL('./demo.js', import.meta.url).pathname
+    await fs.writeFile(newFile, `console.log('hey!)`)
+}
+
+readPjson()
+// writeFile()
