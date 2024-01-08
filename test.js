@@ -2,10 +2,25 @@
 //     console.log(i)
 // })
 
-fs.readFile('file txt', (err, data) => {
-    if (err){
-        console.error(err)
-        return
+// const wait = (time, cb) => {
+//     setTimeout(() => {
+//         cb()
+//     }, time)
+// }
+
+// wait(3000, () => {console.log('3s')})
+
+const wait = (time, cb) => {
+    return new Promise(resolve, reject) => {
+        ssetTimeout(() => {
+            cb()
+            resolve()
+        }, time )
     }
-    console.log(data)
+}
+
+wait(3000, () => {
+    wait(200, () => {
+
+    })
 })
