@@ -23,16 +23,28 @@
 //     return wait(2000)
 // })
 
-import {readFile} from 'node:fs/promises'
+import fs from 'node:fs/promises'
 
-const readPjson = async () => {
-    const pjsonPath = new URL('./package.json', import.meta.url).pathname
-    console.log(JSON.parse(await readFile(pjsonPath, 'utf-8')))
-}
-const writeFile = async () => {
-    const newFile = new URL('./demo.js', import.meta.url).pathname
-    await fs.writeFile(newFile, `console.log('hey!)`)
-}
+// const readPjson = async () => {
+//     const pjsonPath = new URL('./package.json', import.meta.url).pathname
+//     console.log(JSON.parse(await readFile(pjsonPath, 'utf-8')))
+// }
+// const writeFile = async () => {
+//     const newFile = new URL('./demo.js', import.meta.url).pathname
+//     await fs.writeFile(newFile, `console.log('hey!)`)
+// }
 
-readPjson()
+// // readPjson()
 // writeFile()
+
+
+
+// Text content to be written to the file
+const fileContent = "Hello, this is the content of the file.";
+
+// Writing to a file named "example.txt"
+fs.writeFile('./demo.js', fileContent, (err) => {
+    if (err) throw err;
+    console.log('File has been written successfully written here.');
+});
+
